@@ -1,0 +1,20 @@
+[Icon Theme]
+Name=Unlord
+Comment=Iconos de linea a juego con el rice Unlord / RSU (lo que falta lo toma de Breeze)
+Inherits=breeze,hicolor
+Directories=scalable/apps,scalable/places
+FollowsColorScheme=true
+
+[scalable/apps]
+Size=48
+MinSize=16
+MaxSize=512
+Type=Scalable
+Context=Applications
+
+[scalable/places]
+Size=48
+MinSize=16
+MaxSize=512
+Type=Scalable
+Context=Places

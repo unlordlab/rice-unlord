@@ -1,0 +1,41 @@
+# Unlord / RSU — tema GRUB a juego con el rice de KDE
+desktop-image: "background.png"
+desktop-color: "#D3CCB8"
+title-text: ""
+terminal-font: "Share Tech Mono Regular 16"
+terminal-left: "10%"
+terminal-top: "10%"
+terminal-width: "80%"
+terminal-height: "80%"
+terminal-border: "0"
+
++ boot_menu {
+  left = 35%
+  top = 38%
+  width = 30%
+  height = 32%
+  item_font = "Share Tech Mono Regular 22"
+  item_color = "#3A3730"
+  selected_item_font = "Share Tech Mono Regular 22"
+  selected_item_color = "#E6E0CE"
+  selected_item_pixmap_style = "select_*.png"
+  item_height = 46
+  item_padding = 16
+  item_spacing = 10
+  icon_width = 0
+  icon_height = 0
+  item_icon_space = 0
+  scrollbar = false
+}
+
++ label {
+  id = "__timeout__"
+  left = 35%
+  top = 72%
+  width = 30%
+  height = 30
+  align = "center"
+  font = "Share Tech Mono Regular 16"
+  color = "#7A7462"
+  text = "ARRENCADA AUTOMÀTICA EN %d s"
+}

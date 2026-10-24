@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Unlord
+Description=Animación de arranque RSU a juego con el rice Unlord
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/unlord
+ScriptFile=/usr/share/plymouth/themes/unlord/unlord.script

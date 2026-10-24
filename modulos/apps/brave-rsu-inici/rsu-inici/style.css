@@ -1,0 +1,38 @@
+@font-face{font-family:STM;src:url(fonts/stm.woff2)}
+@font-face{font-family:BC;src:url(fonts/bc.woff2)}
+:root{--bg:#D3CCB8;--bg2:#C6BFA9;--ink:#2D2B26;--text:#3A3730;--sub:#6E685A;--faint:#B3AC96;--red:#C8553D;--up:#4F6B3A;--tile:#DCD6C3}
+@media (prefers-color-scheme:dark){:root{--bg:#1C1B18;--bg2:#2D2B26;--ink:#E6E0CE;--text:#D3CCB8;--sub:#958E79;--faint:#4A463D;--red:#D8654B;--up:#9CB07A;--tile:#22201C}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:STM,monospace;overflow:hidden}
+body{background:radial-gradient(ellipse at 50% 45%,var(--bg2) 0%,var(--bg) 70%)}
+.scan{position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.035) 0 1px,transparent 1px 4px)}
+.band{position:fixed;left:6%;right:6%;height:16px;border-top:1px solid var(--faint);
+  background:repeating-linear-gradient(90deg,var(--faint) 0 3px,transparent 3px 22px) 0 10px/100% 3px no-repeat}
+.band.top{top:6vh}.band.bot{bottom:6vh;transform:scaleY(-1)}
+header{position:fixed;top:calc(6vh + 34px);left:8%;right:8%;display:flex;justify-content:space-between;align-items:flex-start}
+.brand{display:flex;gap:14px;align-items:center}.emb{width:46px;height:56px;fill:var(--ink)}
+.brand b{display:block;font-family:BC;font-weight:500;font-size:22px;letter-spacing:6px;color:var(--ink)}
+.brand span{font-size:11px;letter-spacing:3px;color:var(--sub)}
+.estat{text-align:right;font-size:12px;letter-spacing:2.5px;color:var(--sub);display:flex;flex-direction:column;gap:6px}
+#mercat.tensio,#mercat.panic{color:var(--red)}
+main{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);width:min(820px,86vw);text-align:center}
+.clock{font-family:BC;font-weight:500;font-size:132px;letter-spacing:10px;color:var(--ink);line-height:1}
+.date{font-size:15px;letter-spacing:6px;color:var(--sub);margin-top:6px;text-transform:uppercase}
+.redbar{width:44px;height:4px;background:var(--red);margin:22px auto 26px}
+form{display:flex;align-items:center;border:1px solid var(--faint);background:var(--tile);height:52px;padding:0 16px;gap:12px}
+form:focus-within{border-color:var(--ink)}
+.pr{color:var(--red);font-size:14px}
+input{flex:1;border:0;background:transparent;font-family:STM;font-size:17px;letter-spacing:2px;color:var(--ink);outline:none}
+input::placeholder{color:var(--sub);letter-spacing:3px;font-size:13px}
+nav{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:26px}
+nav a{display:flex;flex-direction:column;align-items:center;gap:9px;padding:14px 4px 12px;background:var(--tile);border:1px solid transparent;
+  text-decoration:none;color:var(--text);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;position:relative;transition:border-color .15s}
+nav a:hover{border-color:var(--ink)}
+nav a:hover::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--red)}
+nav img{width:24px;height:24px;filter:grayscale(1) contrast(1.1);opacity:.85}
+nav a:hover img{filter:none;opacity:1}
+footer{position:fixed;bottom:calc(6vh + 30px);left:8%;right:8%;display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:2px}
+#tickers{display:flex;gap:26px;color:var(--text)}
+#tickers .up{color:var(--up)}#tickers .dn{color:var(--red)}
+.lema{color:var(--sub);letter-spacing:3px}
+nav i{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--ink);font-style:normal;font-family:BC;font-size:15px;color:var(--ink)}

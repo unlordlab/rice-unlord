@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "RSU · Inici",
+  "version": "1.0",
+  "description": "Pàgina de nova pestanya a joc amb el rice Unlord / RSU",
+  "chrome_url_overrides": { "newtab": "newtab.html" },
+  "permissions": ["favicon", "storage"],
+  "host_permissions": ["https://query1.finance.yahoo.com/*"]
+}

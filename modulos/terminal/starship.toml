@@ -1,0 +1,59 @@
+# Unlord / RSU — prompt de starship
+# Usa los colores ANSI de la terminal: queda bien con Unlord (claro) y Unlord Nit (oscuro).
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """
+[┌─](dimmed)$directory$git_branch$git_status$python$nodejs$docker_context$cmd_duration$fill$time
+[└─](dimmed)$character"""
+
+[character]
+success_symbol = "[◆](red)"
+error_symbol = "[◆](bold yellow)"
+
+[directory]
+style = "bold"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " ⊘"
+
+[git_branch]
+symbol = "⎇ "
+style = "red"
+format = "[· $symbol$branch ]($style)"
+
+[git_status]
+style = "dimmed"
+format = "[$all_status$ahead_behind ]($style)"
+
+[python]
+symbol = "py "
+style = "dimmed"
+format = "[· $symbol$version( \\($virtualenv\\)) ]($style)"
+
+[nodejs]
+symbol = "node "
+style = "dimmed"
+format = "[· $symbol$version ]($style)"
+
+[docker_context]
+symbol = "docker "
+style = "dimmed"
+format = "[· $symbol$context ]($style)"
+
+[cmd_duration]
+min_time = 2000
+style = "dimmed"
+format = "[· ⧗ $duration ]($style)"
+
+[fill]
+symbol = "·"
+style = "dimmed"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "dimmed"
+format = "[ $time ]($style)"

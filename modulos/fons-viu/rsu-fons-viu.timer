@@ -1,0 +1,10 @@
+[Unit]
+Description=RSU · actualitza el fons viu cada 15 minuts
+
+[Timer]
+OnStartupSec=45s
+OnCalendar=*:0/15
+Persistent=true
+
+[Install]
+WantedBy=timers.target

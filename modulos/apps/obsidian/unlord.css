@@ -1,0 +1,61 @@
+.theme-light {
+  --background-primary: #DCD6C3;
+  --background-primary-alt: #D3CCB8;
+  --background-secondary: #D3CCB8;
+  --background-secondary-alt: #C6BFA9;
+  --background-modifier-border: #B3AC96;
+  --background-modifier-hover: #C6BFA9aa;
+  --text-normal: #2D2B26;
+  --text-muted: #7A7462;
+  --text-faint: #B3AC96;
+  --text-accent: #C8553D;
+  --text-accent-hover: #A8432E;
+  --interactive-accent: #C8553D;
+  --interactive-accent-hover: #A8432E;
+  --text-on-accent: #D3CCB8;
+  --text-selection: #4A463D33;
+  --link-color: #C8553D;
+  --link-external-color: #4F6B78;
+  --h1-color: #2D2B26; --h2-color: #2D2B26; --h3-color: #4A463D;
+  --code-background: #D3CCB8;
+  --code-normal: #2D2B26;
+  --code-comment: #7A7462;
+  --code-keyword: #C8553D;
+  --code-string: #5E7D52;
+  --code-function: #4F6B78;
+  --code-value: #86631C;
+  --blockquote-border-color: #C8553D;
+  --tag-color: #C8553D;
+  --tag-background: #C8553D1a;
+  --font-interface-theme: "Share Tech Mono", "IBM Plex Sans", sans-serif;
+  --font-monospace-theme: "Share Tech Mono", "IBM Plex Mono", monospace;
+}
+.theme-light .workspace-ribbon, .theme-light .titlebar { background: #C6BFA9; }
+.theme-light h1, .theme-light h2 { letter-spacing: .08em; text-transform: uppercase; }
+.theme-light h1::after { content: ""; display: block; width: 40px; height: 4px; margin-top: 6px; background: #C8553D; }
+.theme-dark {
+  --background-primary: #1C1B18;
+  --background-primary-alt: #22201C;
+  --background-secondary: #22201C;
+  --background-secondary-alt: #2D2B26;
+  --background-modifier-border: #4A463D;
+  --background-modifier-hover: #2D2B26;
+  --text-normal: #D3CCB8;
+  --text-muted: #958E79;
+  --text-faint: #4A463D;
+  --text-accent: #D8654B;
+  --interactive-accent: #D8654B;
+  --text-on-accent: #1C1B18;
+  --text-selection: #D3CCB833;
+  --link-color: #D8654B;
+  --link-external-color: #7E9AA6;
+  --h1-color: #E6E0CE; --h2-color: #E6E0CE; --h3-color: #D3CCB8;
+  --code-background: #22201C; --code-normal: #D3CCB8; --code-comment: #958E79;
+  --code-keyword: #D8654B; --code-string: #8FA77F; --code-function: #7E9AA6; --code-value: #C9A458;
+  --blockquote-border-color: #D8654B; --tag-color: #D8654B; --tag-background: #D8654B22;
+  --font-interface-theme: "Share Tech Mono", "IBM Plex Sans", sans-serif;
+  --font-monospace-theme: "Share Tech Mono", "IBM Plex Mono", monospace;
+}
+.theme-dark .workspace-ribbon, .theme-dark .titlebar { background: #2D2B26; }
+.theme-dark h1, .theme-dark h2 { letter-spacing: .08em; text-transform: uppercase; }
+.theme-dark h1::after { content: ""; display: block; width: 40px; height: 4px; margin-top: 6px; background: #D8654B; }

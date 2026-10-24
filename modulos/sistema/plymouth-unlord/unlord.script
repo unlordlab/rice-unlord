@@ -1,0 +1,61 @@
+// Unlord / RSU — Plymouth (módulo script)
+Window.SetBackgroundTopColor(0.827, 0.800, 0.722);
+Window.SetBackgroundBottomColor(0.827, 0.800, 0.722);
+
+NFRAMES = 60;
+for (i = 0; i < NFRAMES; i++)
+  frames[i] = Image("frame-" + i + ".png");
+
+anim = Sprite();
+anim.SetX(Window.GetX() + Window.GetWidth() / 2 - frames[0].GetWidth() / 2);
+anim.SetY(Window.GetY() + Window.GetHeight() / 2 - frames[0].GetHeight() / 2);
+anim.SetZ(10);
+
+tick = 0;
+fun refresh_callback () {
+  anim.SetImage(frames[Math.Int(tick / 2) % NFRAMES]);
+  tick++;
+}
+Plymouth.SetRefreshFunction(refresh_callback);
+
+// ---- Password prompt (only used if the disk is encrypted) ----
+prompt_sprite = Sprite();
+bullets_sprite = Sprite();
+prompt_sprite.SetZ(20);
+bullets_sprite.SetZ(20);
+
+fun display_normal_callback () {
+  prompt_sprite.SetOpacity(0);
+  bullets_sprite.SetOpacity(0);
+  anim.SetOpacity(1);
+}
+
+fun display_password_callback (prompt, bullets) {
+  anim.SetOpacity(0.25);
+  p = Image.Text("CONTRASENYA DEL DISC", 0.18, 0.17, 0.15);
+  prompt_sprite.SetImage(p);
+  prompt_sprite.SetX(Window.GetX() + Window.GetWidth() / 2 - p.GetWidth() / 2);
+  prompt_sprite.SetY(Window.GetY() + Window.GetHeight() / 2 - 40);
+  prompt_sprite.SetOpacity(1);
+  b = "";
+  for (i = 0; i < bullets; i++) b += "* ";
+  bi = Image.Text(b, 0.78, 0.33, 0.24);
+  bullets_sprite.SetImage(bi);
+  bullets_sprite.SetX(Window.GetX() + Window.GetWidth() / 2 - bi.GetWidth() / 2);
+  bullets_sprite.SetY(Window.GetY() + Window.GetHeight() / 2);
+  bullets_sprite.SetOpacity(1);
+}
+
+Plymouth.SetDisplayNormalFunction(display_normal_callback);
+Plymouth.SetDisplayPasswordFunction(display_password_callback);
+
+// ---- Messages (e.g. errors during boot) ----
+msg_sprite = Sprite();
+msg_sprite.SetZ(20);
+fun message_callback (text) {
+  m = Image.Text(text, 0.43, 0.41, 0.35);
+  msg_sprite.SetImage(m);
+  msg_sprite.SetX(Window.GetX() + Window.GetWidth() / 2 - m.GetWidth() / 2);
+  msg_sprite.SetY(Window.GetY() + Window.GetHeight() - 80);
+}
+Plymouth.SetMessageFunction(message_callback);

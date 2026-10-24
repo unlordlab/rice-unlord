@@ -1,0 +1,13 @@
+# Nunca subir secretos
+.env
+.env.*
+*.env
+*.key
+*.pem
+id_rsa*
+id_ed25519*
+# Restos
+*.bak
+*~
+.directory
+comprobacion-unlord.txt

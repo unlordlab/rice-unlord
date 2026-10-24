@@ -1,0 +1,25 @@
+/* Unlord para Zotero 7 — EXPERIMENTAL
+   Zotero no tiene temas oficiales; esto cambia sus colores internos.
+   Si alguna zona no cambia o queda rara, borra el archivo y reinicia Zotero. */
+:root {
+  --material-background: #DCD6C3 !important;
+  --material-sidepane: #D3CCB8 !important;
+  --material-toolbar: #C6BFA9 !important;
+  --material-tabbar: #C6BFA9 !important;
+  --material-button: #C6BFA9 !important;
+  --material-border-quarternary: #B3AC96 !important;
+  --fill-primary: #2D2B26 !important;
+  --fill-secondary: #4A463D !important;
+  --fill-tertiary: #7A7462 !important;
+  --color-accent: #C8553D !important;
+  --accent-blue: #C8553D !important;
+}
+#zotero-items-tree .row.selected,
+#zotero-collections-tree .row.selected {
+  background-color: #4A463D !important;
+  color: #D3CCB8 !important;
+}
+#zotero-items-tree .row.selected:focus-within,
+#zotero-collections-tree .row.selected:focus-within {
+  background-color: #C8553D !important;
+}

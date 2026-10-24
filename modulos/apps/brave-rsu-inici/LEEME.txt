@@ -1,0 +1,13 @@
+RSU · INICI — página de nueva pestaña para Brave
+================================================
+1. Copia la carpeta rsu-inici a un sitio fijo (Brave la lee de ahí siempre):
+     mkdir -p ~/.local/share && cp -r rsu-inici ~/.local/share/
+2. Brave → brave://extensions → activa "Modo desarrollador" (arriba a la derecha)
+   → "Cargar descomprimida" → elige ~/.local/share/rsu-inici
+   (si no ves .local, pulsa Ctrl+H en el selector para mostrar carpetas ocultas)
+3. Abre una pestaña nueva. Si Brave pregunta si quieres mantener el cambio, di que sí.
+
+Personalizar: edita ~/.local/share/rsu-inici/config.js (enlaces, valores, buscador)
+y pulsa "Recargar" en la tarjeta de la extensión en brave://extensions.
+Modo oscuro: sigue el tema de Brave (con el tema QT, cambia con Koi).
+Quitarla: brave://extensions → RSU · Inici → Quitar.

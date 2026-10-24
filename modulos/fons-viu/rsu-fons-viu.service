@@ -1,0 +1,6 @@
+[Unit]
+Description=RSU · fons viu amb el mercat
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/rsu-fons-viu

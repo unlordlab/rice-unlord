@@ -1,0 +1,95 @@
+RICE UNLORD / RSU · PAQUETE COMPLETO
+====================================
+Todo el rice en una carpeta. Descomprímela en tu carpeta personal y abre
+una terminal dentro (Dolphin → clic derecho → Abrir terminal aquí).
+
+ORDEN RECOMENDADO (después de instalar CachyOS y actualizar)
+  1. bash paquetes.sh          programas que usa el rice (pide contraseña)
+  2. Abre Spotify una vez e inicia sesión (solo si quieres su tema)
+  3. bash instalar.sh          menú: elige números o "todo"; pregunta claro/oscuro
+  4. Cierra sesión y vuelve a entrar
+  5. bash instalar-sistema.sh  GRUB, SDDM y Plymouth (sudo, pregunta cada uno)
+  6. Reinicia
+  7. bash comprobar.sh         informe en verde / amarillo / rojo
+     Se guarda en ~/comprobacion-unlord.txt: pásamelo si algo sale en rojo.
+
+MÓDULOS DE instalar.sh  (bash instalar.sh 3 4 8  → solo esos)
+   1 Fondos (incluye los de bloqueo)      8 Widget RSU · Vigilància
+   2 Colores claro / oscuro               9 Pantalla de bloqueo
+   3 Iconos                              10 Paneles y dock (¡borra los actuales!)
+   4 Cursor                              11 Iconos de proyectos en el escritorio
+   5 Sonidos                             12 VS Code / VSCodium y btop
+   6 Fuentes                             13 Spotify (spicetify)
+   7 Konsole, fastfetch y starship        14 Fondo vivo con el mercado
+                                         15 Asistente de voz Elia
+  Antes de tocar nada guarda tu configuración en ~/.config/unlord-backup-FECHA.
+  Para elegir tema sin pregunta:  TEMA=nit bash instalar.sh todo
+
+COPIA EN GITHUB (privada)
+  bash subir-a-github.sh     sube este paquete a un repo privado "rice-unlord"
+                             (repítelo cuando cambies algo del paquete)
+  bash guardar-dotfiles.sh   guarda tus ajustes hechos a mano (atajos, paneles,
+                             fish, widget, EasyEffects...) en un repo privado
+                             "dotfiles" con chezmoi. Repítelo tras cada retoque.
+  Recuperar en otro PC:  gh repo clone rice-unlord && bash rice-unlord/instalar.sh
+                         chezmoi init --apply https://github.com/TU_USUARIO/dotfiles.git
+  Los dos scripts se paran si ven algo que parezca una clave o un .env.
+
+DESHACER
+  Configuración de Plasma: copia los archivos de ~/.config/unlord-backup-FECHA
+  a ~/.config y cierra sesión.
+  GRUB:     sudo cp /etc/default/grub.bak-unlord /etc/default/grub && sudo grub-mkconfig -o /boot/grub/grub.cfg
+  SDDM:     sudo rm /etc/sddm.conf.d/zz-unlord.conf
+  Plymouth: sudo plymouth-set-default-theme cachyos && sudo mkinitcpio -P
+  Spotify:  spicetify restore
+  Además tienes los snapshots de btrfs (Btrfs Assistant) si algo se rompe.
+
+PANTALLA DE BLOQUEO
+  Usa la de KDE con un fondo hecho para ella: marco HUD, "SESSIÓ BLOQUEJADA"
+  y el centro libre para el reloj y la contraseña. Pruébala con Meta+L.
+  (No es una pantalla de bloqueo programada a medida a propósito: si una así
+  falla, te puede dejar sin poder desbloquear.)
+
+APPS MANUALES
+  BRAVE: brave://extensions → Modo desarrollador → Cargar descomprimida →
+         modulos/apps/brave-unlord-theme
+  OBSIDIAN: copia modulos/apps/obsidian/unlord.css a <bóveda>/.obsidian/snippets/
+         → Ajustes → Apariencia → Fragmentos CSS → unlord
+  ZOTERO (experimental): Ajustes → Avanzado → Editor de configuración →
+         toolkit.legacyUserProfileCustomizations.stylesheets = true; copia
+         modulos/apps/zotero/userChrome.css a ~/.zotero/zotero/<perfil>/chrome/
+  KLASSY (ventanas rectas): Configuración → Decoraciones de ventana → Klassy
+  KOI (día/noche): claro = Unlord, oscuro = Unlord Nit
+
+FONDO VIVO (módulo 14)
+  El fondo del emblema dibuja la curva del S&P 500 del día y cambia según el
+  VIX: calma (<20), tensió (20-30), pànic (>30). Se actualiza cada 15 min y
+  sigue el tema claro u oscuro. Fuera de horario muestra la última sesión.
+  Probar sin internet:  rsu-fons-viu --demo panic
+  Otro índice o tamaño: ~/.config/rsu-widget/fons-viu.json
+     {"mida": "2560x1440", "index": "^IBEX", "nom": "IBEX 35"}
+  Quitarlo: systemctl --user disable --now rsu-fons-viu.timer
+            (y elige otro fondo en Configuración → Fondo de pantalla)
+
+ASISTENTE DE VOZ "ELIA" (módulo 15)
+  Newelle (app de asistente para Linux) + un modelo local en Ollama (qwen2.5:14b,
+  cabe en la RTX 3060) + la orden rsu-estat, que le da el estado del mercado,
+  de tus valores y de los informes nuevos. Todo en tu PC, sin enviar nada fuera.
+  Después de bash instalar.sh 15, en Newelle (5 minutos):
+   1. Ajustes → Modelo: proveedor Ollama, modelo qwen2.5:14b.
+      (Si prefieres más inteligencia: proveedor Anthropic/Claude con tu clave de API, de pago.)
+   2. Ajustes → Prompts / instrucciones del sistema: pega el texto de
+      ~/.config/rsu-assistent/personalitat.txt  (cámbiale el nombre si quieres).
+   3. Ajustes → Voz: reconocimiento con Whisper (entiende catalán y castellano) y
+      síntesis con una voz en catalán o castellano; activa leer las respuestas en voz alta.
+   4. Ajustes → activa la memoria a largo plazo y permitir ejecutar órdenes.
+   5. Atajo: Configuración del sistema → Atajos → Añadir aplicación → Newelle → Meta+A.
+  Pruébalo: Meta+A y di "com ha anat el mercat avui?" o "quins informes tinc pendents?".
+  rsu-estat también funciona solo en la terminal.
+
+WIDGET RSU
+  Tus valores y la carpeta de informes: ~/.config/rsu-widget/config.json
+  Precios de Yahoo Finance (sin clave, ~15 min de retraso). Probar: rsu-widget-dades --demo
+  Informes: AAPL_2026-10-23.pdf (+ .md con "Trade Grade: B+" para la nota).
+
+Nada de esto se ha probado aún en tu PC: por eso el orden, las copias y comprobar.sh.

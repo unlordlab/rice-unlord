@@ -1,0 +1,14 @@
+{
+  "KPlugin": {
+    "Id": "org.unlord.rsu",
+    "Name": "RSU · Vigilància",
+    "Description": "Valors en seguiment i informes RSU nous, a la barra",
+    "Icon": "office-chart-line",
+    "Authors": [ { "Name": "Marc Escriba" } ],
+    "Category": "Online Services",
+    "License": "GPL-3.0+",
+    "Version": "1.0"
+  },
+  "KPackageStructure": "Plasma/Applet",
+  "X-Plasma-API-Minimum-Version": "6.0"
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0">
+  <kcfgfile name=""/>
+  <group name="General">
+    <entry name="command" type="String"><default>$HOME/.local/bin/rsu-widget-dades</default></entry>
+    <entry name="interval" type="Int"><default>5</default></entry>
+    <entry name="maxTicker" type="Int"><default>3</default></entry>
+    <entry name="terminalUrl" type="String"><default>http://localhost:8000</default></entry>
+    <entry name="notify" type="Bool"><default>true</default></entry>
+  </group>
+</kcfg>

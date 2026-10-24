@@ -1,0 +1,8 @@
+[Sound Theme]
+Name=Unlord
+Comment=Sonidos mínimos tipo HUD para el rice Unlord / RSU
+Inherits=freedesktop
+Directories=stereo
+
+[stereo]
+OutputProfile=stereo

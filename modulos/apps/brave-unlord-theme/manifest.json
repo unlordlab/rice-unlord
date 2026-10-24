@@ -1,0 +1,92 @@
+{
+  "manifest_version": 3,
+  "name": "Unlord",
+  "version": "1.0",
+  "description": "Tema de navegador a juego con el rice",
+  "theme": {
+    "images": {
+      "theme_ntp_background": "images/ntp.png"
+    },
+    "colors": {
+      "frame": [
+        198,
+        191,
+        169
+      ],
+      "frame_inactive": [
+        198,
+        191,
+        169
+      ],
+      "toolbar": [
+        211,
+        204,
+        184
+      ],
+      "tab_text": [
+        45,
+        43,
+        38
+      ],
+      "tab_background_text": [
+        122,
+        116,
+        98
+      ],
+      "tab_background_text_inactive": [
+        122,
+        116,
+        98
+      ],
+      "bookmark_text": [
+        74,
+        70,
+        61
+      ],
+      "toolbar_text": [
+        74,
+        70,
+        61
+      ],
+      "toolbar_button_icon": [
+        74,
+        70,
+        61
+      ],
+      "omnibox_background": [
+        220,
+        214,
+        195
+      ],
+      "omnibox_text": [
+        45,
+        43,
+        38
+      ],
+      "ntp_background": [
+        211,
+        204,
+        184
+      ],
+      "ntp_text": [
+        45,
+        43,
+        38
+      ],
+      "ntp_link": [
+        200,
+        85,
+        61
+      ],
+      "button_background": [
+        211,
+        204,
+        184
+      ]
+    },
+    "properties": {
+      "ntp_background_alignment": "center",
+      "ntp_background_repeat": "no-repeat"
+    }
+  }
+}

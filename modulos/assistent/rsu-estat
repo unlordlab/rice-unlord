@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+"""rsu-estat — resum de l'estat del mercat i dels informes RSU, en text.
+Pensat perquè l'assistent (Newelle) l'executi i et respongui de viva veu.
+Fa servir les dades del fons viu i del widget RSU; no necessita res més.
+Ús: rsu-estat            resum complet
+    rsu-estat --breu     una sola frase
+"""
+import json, os, subprocess, sys
+from datetime import datetime
+
+def fons_viu():
+    try:
+        with open(os.path.expanduser("~/.cache/rsu-fons-viu/dades.json")) as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+def widget():
+    exe = os.path.expanduser("~/.local/bin/rsu-widget-dades")
+    if not os.path.exists(exe):
+        return None
+    try:
+        out = subprocess.run([exe] + (["--demo"] if "--demo" in sys.argv else []), capture_output=True, text=True, timeout=40).stdout
+        return json.loads(out)
+    except Exception:
+        return None
+
+def pct(x):
+    return f"{'puja' if x >= 0 else 'baixa'} un {abs(x):.2f}".replace(".", ",") + " %"
+
+def main():
+    f, w = fons_viu(), widget()
+    linies = []
+    if f:
+        vix = f.get("vix", 0)
+        estat = "pànic" if vix >= 30 else "tensió" if vix >= 20 else "calma"
+        moment = "avui" if f.get("obert") else "a l'última sessió"
+        linies.append(f"L'S&P 500 {pct(f.get('chg', 0))} {moment}. El VIX és a {vix:.1f}".replace(f"{vix:.1f}", f"{vix:.1f}".replace(".", ",")) + f": {estat}.")
+    if w and w.get("tickers"):
+        parts = [f"{t['s']} {pct(t['c'])}" for t in w["tickers"]]
+        linies.append("Els teus valors: " + "; ".join(parts) + ".")
+        millor = max(w["tickers"], key=lambda t: t["c"]); pitjor = min(w["tickers"], key=lambda t: t["c"])
+        if millor is not pitjor:
+            linies.append(f"El millor és {millor['s']} i el pitjor {pitjor['s']}.")
+    if w is not None:
+        inf = w.get("informes", [])
+        if inf:
+            det = ", ".join(f"{i['t']}" + (f" amb nota {i['nota']}" if i.get("nota") else "") for i in inf)
+            linies.append(f"Tens {len(inf)} informe{'s' if len(inf) != 1 else ''} nou{'s' if len(inf) != 1 else ''} de les últimes 24 hores: {det}.")
+        else:
+            linies.append("No hi ha informes nous en les últimes 24 hores.")
+        if w.get("error"):
+            linies.append("Avís: " + w["error"] + ".")
+    if not linies:
+        linies.append("Encara no tinc dades: el fons viu i el widget RSU no s'han executat mai.")
+    if "--breu" in sys.argv:
+        print(linies[0])
+    else:
+        print(f"[{datetime.now():%H:%M}] " + " ".join(linies))
+
+if __name__ == "__main__":
+    main()

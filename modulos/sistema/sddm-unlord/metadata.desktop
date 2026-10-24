@@ -1,0 +1,11 @@
+[SddmGreeterTheme]
+Name=Unlord
+Description=Tema de inicio de sesión a juego con el rice Unlord / RSU
+Author=unlord
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+ConfigFile=theme.conf
+Theme-Id=unlord
+Theme-API=2.0
+QtVersion=6
